@@ -1,13 +1,13 @@
+import Link from "next/link";
+
 export default function Home() {
+  const test_name = "eevee";
   return (
     <section>
       <div>this is home page</div>
       <div>for each pokemon i want:</div>
-      <ul>
-        <li>name/type</li>
-        <li>image</li>
-        <li>evolution chains</li>
-      </ul>
+
+      <Link href={`/pokemon/${test_name}`}>click here to visit eevee test</Link>
     </section>
   );
 }
