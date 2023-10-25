@@ -8,7 +8,7 @@ export interface PokemonPage {
 export interface Pokemon {
   id: number;
   name: string;
-  type: {
+  types: {
     type: {
       name: string;
     };
@@ -22,7 +22,7 @@ export interface Pokemon {
       };
     };
   };
-  speices: {
+  species: {
     name: string;
   };
 }
