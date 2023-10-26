@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pokemon Demo",
-  description: "Pokemon web app using UWR",
+  title: "Pokedex",
+  description: "This is a demo Poekdex using SWR",
 };
 
 export default function RootLayout({
