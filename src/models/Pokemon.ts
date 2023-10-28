@@ -44,3 +44,7 @@ export interface EvolutionChain {
     };
   };
 }
+
+export type PokemonTypeColors = {
+  [type: string]: string;
+};

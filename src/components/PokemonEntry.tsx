@@ -1,22 +1,28 @@
 import usePokemon from "@/hook/usePokemon";
 import Image from "next/image";
 import DetailInfo from "./DetailInfo";
+import Loading from "./Loading";
+import TypeLabel from "./TypeLabel";
 
 type Props = {
   pokeName: string;
 };
+
 const PokemonEntry = ({ pokeName }: Props) => {
   //host/pokemon/[name]
   const { pokemon, pokemonLoading, mutatePokemon } = usePokemon(pokeName);
 
-  if (pokemonLoading) return <div>loading...</div>;
+  
+  const pokemon_types: { type: { name: string } }[] | undefined =
+  pokemon?.types;
+
+  if (pokemonLoading) return <div><Loading /></div>;
 
   return (
     <>
       {pokemon && (
-        <section className="flexCenter flex-col w-full mt-10 p-5 rounded-lg shadow-lg bg-yellow-200 border border-yellow-300">
-          <h1 className="text-4xl font-bold mb-5">{pokemon.name}</h1>
-
+        <>
+        <div className="flexCenter flex-col w-full mt-5 p-5 rounded-lg shadow-lg bg-slate-200 border border-slate-300">
           <Image
             src={pokemon.sprites.other["official-artwork"].front_default}
             width={200}
@@ -24,7 +30,17 @@ const PokemonEntry = ({ pokeName }: Props) => {
             className="object-cover rounded-2xl"
             alt="pokemon image"
           />
-        </section>
+        </div>
+        <div className="flex justify-start flex-col">
+          <p className="text-gray text-xl">{`#${pokemon.id.toString().padStart(4, '0')}`}</p>
+          <div className="text-3xl font-bold mt-5">{pokemon.name}</div>
+          <div className="flexStart flex-row gap-3 mt-2">
+          {pokemon_types &&
+              pokemon_types.map((item) => <TypeLabel type={item.type.name} />)}
+          </div>
+        </div>
+        
+        </>
       )}
     </>
   );
