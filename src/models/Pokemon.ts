@@ -1,6 +1,6 @@
 //pokemon?limit=20&offset=0
 export interface PokemonPage {
-  results: { name: string }[];
+  results: { url: string, name: string }[];
   next: string | null; //next request url
   previous: string | null;
 }

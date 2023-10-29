@@ -1,7 +1,6 @@
 import usePokemon from "@/hook/usePokemon";
 import Image from "next/image";
 import DetailInfo from "./DetailInfo";
-import Loading from "./Loading";
 import TypeLabel from "./TypeLabel";
 
 type Props = {
@@ -16,7 +15,7 @@ const PokemonEntry = ({ pokeName }: Props) => {
   const pokemon_types: { type: { name: string } }[] | undefined =
   pokemon?.types;
 
-  if (pokemonLoading) return <div><Loading /></div>;
+  //if (pokemonLoading) return <div><Loading /></div>;
 
   return (
     <>

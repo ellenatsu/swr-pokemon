@@ -7,6 +7,11 @@ export async function getPokemon(name: string) {
   return response.data;
 }
 
+export async function getPokemonById(id: string) {
+  const response = await api.get<Pokemon>(`/pokemon/${id}`);
+  return response.data;
+}
+
 export async function getPokemonPage(page: number) {
   const pageSize = 12;
   const response = await api.get<PokemonPage>(
